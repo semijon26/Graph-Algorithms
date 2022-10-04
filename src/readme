@@ -1,0 +1,6 @@
+
+
+GraphUnweighted and GraphWeighted are both abstract classes.
+
+Every concrete Graph class is a child of an abstract class.
+For example VillageGraph extends GraphWeighted. The difference is that it is undirected.
