@@ -1,6 +1,6 @@
 # Graph-Algorithms
 
-Dieses Projekt ist im Modul Programmiertechnik 3 (Algorithmen und Datenstrukturen) entstanden.
+Dieses Projekt ist im Modul Programmiertechnik 3 (Software Design, TH AB) entstanden.
 
 Implementiert wurde:
 
