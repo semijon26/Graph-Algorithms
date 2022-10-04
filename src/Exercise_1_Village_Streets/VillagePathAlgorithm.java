@@ -10,11 +10,11 @@ import java.util.PriorityQueue;
 
 public class VillagePathAlgorithm {
 
-    private WeightedUndirectedGraph initialGraph;
-    private WeightedUndirectedGraph resultGraph = new WeightedUndirectedGraph();
-    private PriorityQueue<PrimNode> prioQueue = new PriorityQueue<>();
-    private LinkedList<PrimNode> prioQueueHelper = new LinkedList<>();
-    private LinkedList<PrimNode> resultList = new LinkedList<>();
+    private final WeightedUndirectedGraph initialGraph;
+    private final WeightedUndirectedGraph resultGraph = new WeightedUndirectedGraph();
+    private final PriorityQueue<PrimNode> prioQueue = new PriorityQueue<>();
+    private final LinkedList<PrimNode> prioQueueHelper = new LinkedList<>();
+    private final LinkedList<PrimNode> resultList = new LinkedList<>();
 
 
     public VillagePathAlgorithm(WeightedUndirectedGraph graph) {
@@ -71,7 +71,7 @@ public class VillagePathAlgorithm {
 
     private void makeResultGraph() {
         for (PrimNode n : resultList) { // O(n)
-            if (n.getPredecessor() != null){
+            if (n.getPredecessor() != null) {
                 resultGraph.addEdge(n.getPredecessor().getVertex(), n.getVertex(), n.getWeight());
             }
         }

@@ -11,10 +11,10 @@ import java.util.LinkedList;
 
 public class WeddingGraphAlgorithm {
 
-    private WeightedDirectedGraph initialGraph;
-    private WeightedDirectedGraph clearedGraph = new WeightedDirectedGraph();
-    private WeightedDirectedGraph residualGraph = new WeightedDirectedGraph();
-    private WeightedDirectedGraph resultGraph = new WeightedDirectedGraph();
+    private final WeightedDirectedGraph initialGraph;
+    private final WeightedDirectedGraph clearedGraph = new WeightedDirectedGraph();
+    private final WeightedDirectedGraph residualGraph = new WeightedDirectedGraph();
+    private final WeightedDirectedGraph resultGraph = new WeightedDirectedGraph();
 
 
     public WeddingGraphAlgorithm(WeightedDirectedGraph graph) {
@@ -30,7 +30,7 @@ public class WeddingGraphAlgorithm {
     }
 
 
-    private void fordFulkerson () {
+    private void fordFulkerson() {
 
         // erstellt deep copy
         createResidualGraph();
@@ -60,7 +60,7 @@ public class WeddingGraphAlgorithm {
                 }
                 // counter, damit für die Senke nicht mehr nach dem nachbar geschaut wird.
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     // counter zurücksetzen
                     counter = 0;
                     break;
@@ -78,13 +78,13 @@ public class WeddingGraphAlgorithm {
                 }
 
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     break;
                 }
             }
 
             // und der umgekehrten kante die kapazität addieren
-            for (int i = path.size()-1; i > 0; i--) {
+            for (int i = path.size() - 1; i > 0; i--) {
 
                 Vertex v = path.get(i);
 
@@ -132,8 +132,7 @@ public class WeddingGraphAlgorithm {
         for (Vertex v : clearedGraph.getMap().keySet()) {
             if (v.getType() == 1) {
                 clearedGraph.addEdge(source, v, 1);
-            }
-            else if (v.getType() == 2) {
+            } else if (v.getType() == 2) {
                 clearedGraph.addEdge(v, trap, 1);
             }
         }
@@ -160,7 +159,7 @@ public class WeddingGraphAlgorithm {
         }
     }
 
-    private boolean isPath_bfs (Vertex s, Vertex t) {
+    private boolean isPath_bfs(Vertex s, Vertex t) {
 
         HashSet<Vertex> visitedNodes = new HashSet<>();
         LinkedList<Vertex> queue = new LinkedList<>();
@@ -177,7 +176,7 @@ public class WeddingGraphAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){
+            for (Node node : residualGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -215,7 +214,7 @@ public class WeddingGraphAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){
+            for (Node node : residualGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -239,7 +238,7 @@ public class WeddingGraphAlgorithm {
         return extractPath(traversedNodes, s, t);
     }
 
-    private LinkedList<Vertex> extractPath (LinkedList<BfsNode> list, Vertex s, Vertex t) {
+    private LinkedList<Vertex> extractPath(LinkedList<BfsNode> list, Vertex s, Vertex t) {
         LinkedList<BfsNode> path = new LinkedList<>();
         BfsNode sNode = null;
         for (BfsNode bfsNode : list) {
@@ -269,7 +268,7 @@ public class WeddingGraphAlgorithm {
         return returnList;
     }
 
-    private void createResultGraph () {
+    private void createResultGraph() {
         for (Vertex v : clearedGraph.getMap().keySet()) {
             resultGraph.addVertex(v);
         }
@@ -324,7 +323,7 @@ public class WeddingGraphAlgorithm {
             }
         }
 
-        if (personsWhoFoundSomeone.size() != clearedGraph.getMap().size()-2) {
+        if (personsWhoFoundSomeone.size() != clearedGraph.getMap().size() - 2) {
             for (Vertex v : clearedGraph.getMap().keySet()) {
                 if (!personsWhoFoundSomeone.contains(v) && v.getType() != 0) {
                     System.out.println(v.getLabel() + " hat leider niemanden gefunden.");

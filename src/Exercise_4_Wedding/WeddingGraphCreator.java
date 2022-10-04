@@ -15,14 +15,14 @@ public class WeddingGraphCreator implements IGraphCreator {
         System.out.println("Ein neuer Graph für die Hochzeitsplanung wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Personen ein: (Ganze, gerade Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000 || vertexCount % 2 != 0) {
+        if (vertexCount < 2 || vertexCount > 1000 || vertexCount % 2 != 0) {
             throw new IllegalArgumentException();
         }
 
         System.out.println("Geben Sie die Namen aller Männer ein und bestätigen Sie jeweils mit Enter. (Keine Duplikate erlaubt)");
 
-        for (int i = 0; i < vertexCount/2; i++) {
-            System.out.println("Person " + (i+1) + ": ");
+        for (int i = 0; i < vertexCount / 2; i++) {
+            System.out.println("Person " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             if (label.equals("x")) {
                 throw new IllegalArgumentException("Person darf nicht x heißen!");
@@ -34,8 +34,8 @@ public class WeddingGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Namen aller Frauen ein und bestätigen Sie jeweils mit Enter. (Keine Duplikate erlaubt)");
 
-        for (int i = 0; i < vertexCount/2; i++) {
-            System.out.println("Person " + (i+1) + ": ");
+        for (int i = 0; i < vertexCount / 2; i++) {
+            System.out.println("Person " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             if (label.equals("x")) {
                 throw new IllegalArgumentException("Person darf nicht x heißen!");
@@ -222,8 +222,7 @@ public class WeddingGraphCreator implements IGraphCreator {
     }
 
 
-
-    public void addHelperSourceAndTrap () {
+    public void addHelperSourceAndTrap() {
         Vertex source = new Vertex("source");
         Vertex trap = new Vertex("trap");
 
@@ -236,8 +235,7 @@ public class WeddingGraphCreator implements IGraphCreator {
         for (Vertex v : graph.getMap().keySet()) {
             if (v.getType() == 1) {
                 graph.addEdge(source, v, 1);
-            }
-            else if (v.getType() == 2) {
+            } else if (v.getType() == 2) {
                 graph.addEdge(v, trap, 1);
             }
         }

@@ -15,7 +15,7 @@ public class TrafficGraphCreator implements IGraphCreator {
         System.out.println("Ein neuer Graph für die Verkehrsplanung wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Knoten, bestehend aus Ampeln, Start- und Endpunkt, ein: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
@@ -35,8 +35,8 @@ public class TrafficGraphCreator implements IGraphCreator {
         graph.addVertex(flowTrap);
         graph.setTrap(flowTrap);
 
-        for (int i = 0; i < vertexCount-2; i++) {
-            System.out.println("Knoten " + (i+1) + ": ");
+        for (int i = 0; i < vertexCount - 2; i++) {
+            System.out.println("Knoten " + (i + 1) + ": ");
             label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label);
             labelMap.put(label, vertex);
@@ -45,12 +45,12 @@ public class TrafficGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Anzahl der Kanten ein: (Ganze Zahl zwischen 1 und 1000)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < 1 || edgeCount > 1000) {
+        if (edgeCount < 1 || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -58,7 +58,7 @@ public class TrafficGraphCreator implements IGraphCreator {
             String dest = bufferedReader.readLine();
             System.out.println("Kantengewicht: ");
             int weight = scanner.nextInt();
-            if(weight < 1 || weight > 10000) {
+            if (weight < 1 || weight > 10000) {
                 throw new IllegalArgumentException();
             }
 
@@ -70,7 +70,7 @@ public class TrafficGraphCreator implements IGraphCreator {
 
         try {
             checkIfisZusammenhaengenderGraph(graph);
-            TrafficGraphAlgorithm trafficGraphAlgorithm  = new TrafficGraphAlgorithm(graph);
+            TrafficGraphAlgorithm trafficGraphAlgorithm = new TrafficGraphAlgorithm(graph);
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -100,7 +100,7 @@ public class TrafficGraphCreator implements IGraphCreator {
         graph.addEdge(s, b, 16);
         graph.addEdge(b, a, 6);
         graph.addEdge(a, c, 15);
-        graph.addEdge(b, d,15);
+        graph.addEdge(b, d, 15);
         graph.addEdge(c, b, 4);
         graph.addEdge(c, d, 7);
         graph.addEdge(c, t, 10);
@@ -109,7 +109,7 @@ public class TrafficGraphCreator implements IGraphCreator {
         System.out.println("Graph: ");
         System.out.println(graph);
 
-        TrafficGraphAlgorithm trafficGraphAlgorithm  = new TrafficGraphAlgorithm(graph);
+        TrafficGraphAlgorithm trafficGraphAlgorithm = new TrafficGraphAlgorithm(graph);
 
     }
 }

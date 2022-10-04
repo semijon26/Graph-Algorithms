@@ -30,7 +30,7 @@ public class PrimNode implements Comparable<PrimNode> {
     }
 
     public PrimNode getPredecessor() {
-            return predecessor;
+        return predecessor;
     }
 
     public void setPredecessor(PrimNode predecessor) {
@@ -49,7 +49,7 @@ public class PrimNode implements Comparable<PrimNode> {
 
     @Override
     public String toString() {
-            return vertex + " (" + weight + ")";
+        return vertex + " (" + weight + ")";
     }
 
 }

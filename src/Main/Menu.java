@@ -20,7 +20,7 @@ public class Menu {
 
                 Es wurde für die "Graph"schaft Schilda entwickelt, da die Menschen dort vor kurzem viele komplizierte
                 Probleme lösen mussten. Mit diesem Tool ist all das nun ohne Stift, Papier und Kopfschmerzen möglich!
-                
+                                
                 Was möchtest du gerne berechnen?
                 """);
         System.out.println();

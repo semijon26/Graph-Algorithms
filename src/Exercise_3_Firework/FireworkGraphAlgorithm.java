@@ -10,10 +10,10 @@ import java.util.PriorityQueue;
 
 public class FireworkGraphAlgorithm {
 
-    private WeightedUndirectedGraph graph;
-    private PriorityQueue<DijkstraNode> prioQueue = new PriorityQueue<>();
-    private LinkedList<DijkstraNode> prioQueueHelper = new LinkedList<>();
-    private LinkedList<DijkstraNode> resultList = new LinkedList<>();
+    private final WeightedUndirectedGraph graph;
+    private final PriorityQueue<DijkstraNode> prioQueue = new PriorityQueue<>();
+    private final LinkedList<DijkstraNode> prioQueueHelper = new LinkedList<>();
+    private final LinkedList<DijkstraNode> resultList = new LinkedList<>();
 
 
     public FireworkGraphAlgorithm(WeightedUndirectedGraph graph) {

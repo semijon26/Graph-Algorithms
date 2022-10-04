@@ -13,7 +13,7 @@ public abstract class Graph {
         map = new HashMap<>();
     }
 
-    public void addVertex (Vertex vertex) throws IllegalArgumentException {
+    public void addVertex(Vertex vertex) throws IllegalArgumentException {
 
         for (Vertex v : map.keySet()) {
             if (v.getLabel().equals(vertex.getLabel())) {
@@ -23,7 +23,7 @@ public abstract class Graph {
         map.put(vertex, new LinkedList<>());
     }
 
-    public abstract void addEdge (Vertex source, Vertex destination) throws IllegalArgumentException;
+    public abstract void addEdge(Vertex source, Vertex destination) throws IllegalArgumentException;
 
     public int countVertices() {
         return map.keySet().size();
@@ -31,15 +31,15 @@ public abstract class Graph {
 
     public abstract int countEdges();
 
-    public boolean containsVertex (Vertex vertex) {
+    public boolean containsVertex(Vertex vertex) {
         return map.containsKey(vertex);
     }
 
-    public boolean containsEdge (Edge edge) {
+    public boolean containsEdge(Edge edge) {
 
         for (Vertex v : map.keySet()) {
             for (Node n : map.get(v)) {
-                if(edge.getSrc() == n.getEdge().getSrc() && edge.getDest() == n.getEdge().getDest()) {
+                if (edge.getSrc() == n.getEdge().getSrc() && edge.getDest() == n.getEdge().getDest()) {
                     return true;
                 }
             }
@@ -47,13 +47,13 @@ public abstract class Graph {
         return false;
     }
 
-    public void removeEdge (Vertex src, Vertex dest, boolean removeOppositeDirection) {
+    public void removeEdge(Vertex src, Vertex dest, boolean removeOppositeDirection) {
         for (Vertex v : map.keySet()) {
             for (Node n : map.get(v)) {
-                if(src == n.getEdge().getSrc() && dest == n.getEdge().getDest()) {
+                if (src == n.getEdge().getSrc() && dest == n.getEdge().getDest()) {
                     map.get(v).remove(n);
                 }
-                if (removeOppositeDirection){
+                if (removeOppositeDirection) {
                     if (dest == n.getEdge().getSrc() && src == n.getEdge().getDest()) {
                         map.get(v).remove(n);
                     }
@@ -82,7 +82,7 @@ public abstract class Graph {
         return map.get(vertex);
     }
 
-    public Vertex getVertex (String label) {
+    public Vertex getVertex(String label) {
         for (Vertex v : map.keySet()) {
             if (label.equals(v.getLabel())) {
                 return v;

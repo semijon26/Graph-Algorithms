@@ -5,13 +5,13 @@ public class Edge {
     Vertex src, dest;
     int weight;
 
-    public Edge (Vertex src, Vertex dest) {
+    public Edge(Vertex src, Vertex dest) {
         this.src = src;
         this.dest = dest;
         weight = 0;
     }
 
-    public Edge (Vertex src, Vertex dest, int weight) {
+    public Edge(Vertex src, Vertex dest, int weight) {
         this.src = src;
         this.dest = dest;
         this.weight = weight;

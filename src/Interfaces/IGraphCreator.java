@@ -70,7 +70,7 @@ public interface IGraphCreator {
                 Vertex current = queue.poll();
 
                 // für jeden nachbarknoten vom obersten queue-knoten:
-                for (Node node : testGraph.getAdjVertices(current)){
+                for (Node node : testGraph.getAdjVertices(current)) {
 
                     // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                     if (!visitedNodes.contains(node.getDestVertex())) {
@@ -93,7 +93,7 @@ public interface IGraphCreator {
         }
     }
 
-    default void checkIfhasConnectionFromSourceToTrap (Graph graph) throws Exception {
+    default void checkIfhasConnectionFromSourceToTrap(Graph graph) throws Exception {
 
         Graph testGraph = graph;
         boolean isDirected = false;
@@ -145,7 +145,7 @@ public interface IGraphCreator {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : testGraph.getAdjVertices(current)){
+            for (Node node : testGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if (!visitedNodes.contains(node.getDestVertex())) {

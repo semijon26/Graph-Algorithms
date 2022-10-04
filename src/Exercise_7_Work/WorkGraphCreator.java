@@ -1,6 +1,7 @@
 package Exercise_7_Work;
 
-import Graph.*;
+import Graph.Vertex;
+import Graph.WeightedDirectedGraph;
 import Interfaces.IGraphCreator;
 
 import java.io.IOException;
@@ -14,14 +15,14 @@ public class WorkGraphCreator implements IGraphCreator {
         System.out.println("Ein neuer Graph für die Aufgabenverteilung wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Arbeiter/Aufgaben an: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         System.out.println("Geben Sie die Namen aller Arbeiter ein und bestätigen Sie jeweils mit Enter. (Keine Duplikate erlaubt)");
 
         for (int i = 0; i < vertexCount; i++) {
-            System.out.println("Arbeiter " + (i+1) + ": ");
+            System.out.println("Arbeiter " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label, 1);
             labelMap.put(label, vertex);
@@ -31,7 +32,7 @@ public class WorkGraphCreator implements IGraphCreator {
         System.out.println("Geben Sie die Bezeichnungen aller Aufgaben ein und bestätigen Sie jeweils mit Enter. (Keine Duplikate erlaubt)");
 
         for (int i = 0; i < vertexCount; i++) {
-            System.out.println("Aufgabe " + (i+1) + ": ");
+            System.out.println("Aufgabe " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label, 2);
             labelMap.put(label, vertex);
@@ -41,12 +42,12 @@ public class WorkGraphCreator implements IGraphCreator {
         System.out.println("Geben Sie die Anzahl der Kanten (Anzahl der Kompetenzen, die in der Liste stehen) ein: \n" +
                 "(Jede Person mindestens 1 Kompetenz und jede Kompetenz mindestens 1 Person, die sie ausführen könnte)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < vertexCount || edgeCount > 1000) {
+        if (edgeCount < vertexCount || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -72,9 +73,10 @@ public class WorkGraphCreator implements IGraphCreator {
         System.out.println(graph);
         addHelperSourceAndTrap();
 
-        WorkGraphAlgorithm workGraphAlgorithm  = new WorkGraphAlgorithm(graph);
+        WorkGraphAlgorithm workGraphAlgorithm = new WorkGraphAlgorithm(graph);
 
     }
+
     @Override
     public void runExample() {
 
@@ -131,11 +133,11 @@ public class WorkGraphCreator implements IGraphCreator {
         System.out.println("Graph: ");
         System.out.println(graph);
         addHelperSourceAndTrap();
-        WorkGraphAlgorithm workGraphAlgorithm  = new WorkGraphAlgorithm(graph);
+        WorkGraphAlgorithm workGraphAlgorithm = new WorkGraphAlgorithm(graph);
     }
 
 
-    public void addHelperSourceAndTrap () {
+    public void addHelperSourceAndTrap() {
         Vertex source = new Vertex("source");
         Vertex trap = new Vertex("trap");
 
@@ -148,8 +150,7 @@ public class WorkGraphCreator implements IGraphCreator {
         for (Vertex v : graph.getMap().keySet()) {
             if (v.getType() == 1) {
                 graph.addEdge(source, v, 1);
-            }
-            else if (v.getType() == 2) {
+            } else if (v.getType() == 2) {
                 graph.addEdge(v, trap, 1);
             }
         }

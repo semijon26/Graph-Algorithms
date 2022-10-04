@@ -2,20 +2,20 @@ package Exercise_5_Postman;
 
 import Graph.Edge;
 import Graph.Node;
-import Graph.Vertex;
 import Graph.UnweightedUndirectedGraph;
+import Graph.Vertex;
 
 import java.util.ArrayList;
 
 public class PostmanGraphAlgorithm {
 
-    private UnweightedUndirectedGraph graph;
-    private UnweightedUndirectedGraph workGraph = new UnweightedUndirectedGraph();
-    private ArrayList<Vertex> tour = new ArrayList<>();
-    private ArrayList<Vertex> subtour = new ArrayList<>();
+    private final UnweightedUndirectedGraph graph;
+    private final UnweightedUndirectedGraph workGraph = new UnweightedUndirectedGraph();
+    private final ArrayList<Vertex> tour = new ArrayList<>();
+    private final ArrayList<Vertex> subtour = new ArrayList<>();
     private Vertex start = null;
     private Vertex akt = null;
-    private int graphType;
+    private final int graphType;
     private ArrayList<Vertex> resultTour = null;
 
 
@@ -47,7 +47,7 @@ public class PostmanGraphAlgorithm {
     }
 
 
-    private ArrayList<Vertex> hierholzer (){
+    private ArrayList<Vertex> hierholzer() {
 
         // start wird bereits in checkGraph erstmals festgelegt
         tour.add(start);
@@ -107,7 +107,7 @@ public class PostmanGraphAlgorithm {
     }
 
 
-    private int countFreeEdgesOfVertex (Vertex vertex) {
+    private int countFreeEdgesOfVertex(Vertex vertex) {
         return workGraph.getAdjVertices(vertex).size();
     }
 
@@ -131,7 +131,7 @@ public class PostmanGraphAlgorithm {
         }
         tour.remove(replaceHere);
         for (int i = 0; i < subtour.size(); i++) {
-            tour.add(replaceHere+i, subtour.get(i));
+            tour.add(replaceHere + i, subtour.get(i));
         }
         subtour.clear();
 
@@ -142,8 +142,7 @@ public class PostmanGraphAlgorithm {
     }
 
 
-
-    private int checkGraphIfEulersch () {
+    private int checkGraphIfEulersch() {
         // Output:  Eulergraph: 1    Semi-Eulerisch: 2     Ungültig: 0
 
         int counter = 0;
@@ -154,15 +153,13 @@ public class PostmanGraphAlgorithm {
             }
         }
 
-        if (counter == 0){
+        if (counter == 0) {
             for (Vertex v : graph.getMap().keySet()) {
                 // nehme ersten knoten und gehe aus der schleife
                 start = v;
                 return 1;
             }
-        }
-
-        else if (counter == 2) {
+        } else if (counter == 2) {
             for (Vertex v : graph.getMap().keySet()) {
                 if (graph.getAdjVertices(v).size() % 2 == 1) {
                     // start = ungerader knoten
@@ -183,7 +180,7 @@ public class PostmanGraphAlgorithm {
 
         for (int i = 0; i < resultTour.size(); i++) {
             System.out.print(resultTour.get(i));
-            if (i < resultTour.size()-1) {
+            if (i < resultTour.size() - 1) {
                 System.out.print(" -> ");
             }
         }

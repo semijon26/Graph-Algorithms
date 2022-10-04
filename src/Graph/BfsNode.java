@@ -1,10 +1,8 @@
 package Graph;
 
-import Graph.Vertex;
-
 public class BfsNode {
 
-    private Vertex vertex;
+    private final Vertex vertex;
     private Vertex parent;
 
     public BfsNode(Vertex vertex) {

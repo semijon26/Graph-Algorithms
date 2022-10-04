@@ -1,6 +1,6 @@
 package Graph;
 
-public class UnweightedUndirectedGraph extends UnweightedGraph{
+public class UnweightedUndirectedGraph extends UnweightedGraph {
 
     @Override
     public void addEdge(Vertex source, Vertex destination) throws IllegalArgumentException {
@@ -22,6 +22,6 @@ public class UnweightedUndirectedGraph extends UnweightedGraph{
         for (Vertex v : map.keySet()) {
             counter = counter + map.get(v).size();
         }
-        return counter/2;
+        return counter / 2;
     }
 }

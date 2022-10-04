@@ -12,9 +12,9 @@ import java.util.LinkedList;
 
 public class WorkGraphAlgorithm {
 
-    private WeightedDirectedGraph initialGraph;
-    private WeightedDirectedGraph residualGraph = new WeightedDirectedGraph();
-    private WeightedDirectedGraph resultGraph = new WeightedDirectedGraph();
+    private final WeightedDirectedGraph initialGraph;
+    private final WeightedDirectedGraph residualGraph = new WeightedDirectedGraph();
+    private final WeightedDirectedGraph resultGraph = new WeightedDirectedGraph();
 
 
     public WorkGraphAlgorithm(WeightedDirectedGraph graph) {
@@ -28,7 +28,7 @@ public class WorkGraphAlgorithm {
     }
 
 
-    private void fordFulkerson () {
+    private void fordFulkerson() {
 
         // erstellt deep copy
         createResidualGraph();
@@ -56,7 +56,7 @@ public class WorkGraphAlgorithm {
                 }
                 // counter, damit für die Senke nicht mehr nach dem nachbar geschaut wird.
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     // counter zurücksetzen
                     counter = 0;
                     break;
@@ -74,13 +74,13 @@ public class WorkGraphAlgorithm {
                 }
 
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     break;
                 }
             }
 
             // und der umgekehrten kante die kapazität addieren
-            for (int i = path.size()-1; i > 0; i--) {
+            for (int i = path.size() - 1; i > 0; i--) {
 
                 Vertex v = path.get(i);
 
@@ -118,7 +118,7 @@ public class WorkGraphAlgorithm {
 
     }
 
-    private boolean isPath_bfs (Vertex s, Vertex t) {
+    private boolean isPath_bfs(Vertex s, Vertex t) {
 
         HashSet<Vertex> visitedNodes = new HashSet<>();
         LinkedList<Vertex> queue = new LinkedList<>();
@@ -135,7 +135,7 @@ public class WorkGraphAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){
+            for (Node node : residualGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -173,7 +173,7 @@ public class WorkGraphAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){
+            for (Node node : residualGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -197,7 +197,7 @@ public class WorkGraphAlgorithm {
         return extractPath(traversedNodes, s, t);
     }
 
-    private LinkedList<Vertex> extractPath (LinkedList<BfsNode> list, Vertex s, Vertex t) {
+    private LinkedList<Vertex> extractPath(LinkedList<BfsNode> list, Vertex s, Vertex t) {
         LinkedList<BfsNode> path = new LinkedList<>();
         BfsNode sNode = null;
         for (BfsNode bfsNode : list) {
@@ -227,7 +227,7 @@ public class WorkGraphAlgorithm {
         return returnList;
     }
 
-    private void createResultGraph () {
+    private void createResultGraph() {
         for (Vertex v : initialGraph.getMap().keySet()) {
             resultGraph.addVertex(v);
         }
@@ -283,7 +283,7 @@ public class WorkGraphAlgorithm {
             }
         }
 
-        if (matchedVertices.size() != initialGraph.getMap().size()-2) {
+        if (matchedVertices.size() != initialGraph.getMap().size() - 2) {
             for (Vertex v : initialGraph.getMap().keySet()) {
                 if (!matchedVertices.contains(v) && v.getType() != 0) {
                     if (v.getType() == 1) {

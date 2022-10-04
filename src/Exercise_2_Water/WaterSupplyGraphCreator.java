@@ -19,28 +19,28 @@ public class WaterSupplyGraphCreator implements IGraphCreator {
         System.out.println("Ein neuer Graph für die Wasserversorgung wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Knoten ein, inkl. Wasserwerk und Ziel: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         System.out.println("Geben Sie die Bezeichnungen aller Häuser ein: (Keine Duplikate erlaubt)");
-        
+
         System.out.println("Quelle/Wasserwerk: ");
         String label = bufferedReader.readLine();
         Vertex flowSource = new Vertex(label);
         labelMap.put(label, flowSource);
         graph.addVertex(flowSource);
         graph.setSource(flowSource);
-        
+
         System.out.println("Senke/Ziel: ");
         label = bufferedReader.readLine();
         Vertex flowTrap = new Vertex(label);
         labelMap.put(label, flowTrap);
         graph.addVertex(flowTrap);
         graph.setTrap(flowTrap);
-        
-        for (int i = 0; i < vertexCount-2; i++) {
-            System.out.println("Knoten " + (i+1) + ": ");
+
+        for (int i = 0; i < vertexCount - 2; i++) {
+            System.out.println("Knoten " + (i + 1) + ": ");
             label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label);
             labelMap.put(label, vertex);
@@ -49,12 +49,12 @@ public class WaterSupplyGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Anzahl der Kanten ein: (Ganze Zahl zwischen 1 und 1000)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < 1 || edgeCount > 1000) {
+        if (edgeCount < 1 || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -62,7 +62,7 @@ public class WaterSupplyGraphCreator implements IGraphCreator {
             String dest = bufferedReader.readLine();
             System.out.println("Kantengewicht (1 - 10000): ");
             int weight = scanner.nextInt();
-            if(weight < 1 || weight > 10000) {
+            if (weight < 1 || weight > 10000) {
                 throw new IllegalArgumentException();
             }
 

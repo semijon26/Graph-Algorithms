@@ -33,6 +33,6 @@ public class WeightedUndirectedGraph extends WeightedGraph {
         for (Vertex v : map.keySet()) {
             counter = counter + map.get(v).size();
         }
-        return counter/2;
+        return counter / 2;
     }
 }

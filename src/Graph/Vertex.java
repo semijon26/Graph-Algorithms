@@ -2,12 +2,12 @@ package Graph;
 
 public class Vertex {
 
-    private String label;
+    private final String label;
 
     // type 0 = group A (worker)    type 1 = group B (task)    type 0 = no group (-> source, trap)
     private int type = 0;
 
-    public Vertex (String label) {
+    public Vertex(String label) {
         this.label = label;
     }
 

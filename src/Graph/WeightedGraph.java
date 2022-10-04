@@ -3,8 +3,8 @@ package Graph;
 //bidirectional
 public abstract class WeightedGraph extends Graph {
 
-// overridden because addEdge from class Graph doesn't have weight parameter.
-    public void addEdge (Vertex source, Vertex destination, int weight) {
+    // overridden because addEdge from class Graph doesn't have weight parameter.
+    public void addEdge(Vertex source, Vertex destination, int weight) {
         if (source == destination) {
             throw new IllegalArgumentException("Start- und Zielknoten einer Kante müssen unterschiedlich sein!");
         }

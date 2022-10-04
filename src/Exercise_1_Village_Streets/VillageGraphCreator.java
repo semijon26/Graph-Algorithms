@@ -1,6 +1,5 @@
 package Exercise_1_Village_Streets;
 
-import Graph.Graph;
 import Graph.Vertex;
 import Graph.WeightedUndirectedGraph;
 import Interfaces.IGraphCreator;
@@ -11,17 +10,17 @@ public class VillageGraphCreator implements IGraphCreator {
 
     WeightedUndirectedGraph graph = new WeightedUndirectedGraph();
 
-    public void create () throws IOException {
+    public void create() throws IOException {
         System.out.println("Ein neuer Graph für das Straßennetz wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Knoten ein: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         System.out.println("Geben Sie die Bezeichnungen aller Knoten ein: (Keine Duplikate erlaubt)");
         for (int i = 0; i < vertexCount; i++) {
-            System.out.println("Knoten " + (i+1) + ": ");
+            System.out.println("Knoten " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label);
             labelMap.put(label, vertex);
@@ -30,12 +29,12 @@ public class VillageGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Anzahl der Kanten ein: (ganze Zahl zwischen 1 und 1000)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < 1 || edgeCount > 1000) {
+        if (edgeCount < 1 || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -43,7 +42,7 @@ public class VillageGraphCreator implements IGraphCreator {
             String dest = bufferedReader.readLine();
             System.out.println("Kantengewicht (1 - 10000): ");
             int weight = scanner.nextInt();
-            if(weight < 1 || weight > 10000) {
+            if (weight < 1 || weight > 10000) {
                 throw new IllegalArgumentException();
             }
 

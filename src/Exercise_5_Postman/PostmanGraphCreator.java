@@ -1,6 +1,5 @@
 package Exercise_5_Postman;
 
-import Exercise_1_Village_Streets.VillageGraphCreator;
 import Graph.UnweightedUndirectedGraph;
 import Graph.Vertex;
 import Interfaces.IGraphCreator;
@@ -9,7 +8,7 @@ import java.io.IOException;
 
 public class PostmanGraphCreator implements IGraphCreator {
 
-    private UnweightedUndirectedGraph graph = new UnweightedUndirectedGraph();
+    private final UnweightedUndirectedGraph graph = new UnweightedUndirectedGraph();
 
     @Override
     public void create() throws IOException {
@@ -17,13 +16,13 @@ public class PostmanGraphCreator implements IGraphCreator {
         System.out.println("Ein neuer Graph für das Straßennetz, wo der Postbote Einladungen verteilen soll, wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Knoten ein: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         System.out.println("Geben Sie die Bezeichnungen aller Knoten ein: (Keine Duplikate erlaubt)");
         for (int i = 0; i < vertexCount; i++) {
-            System.out.println("Knoten " + (i+1) + ": ");
+            System.out.println("Knoten " + (i + 1) + ": ");
             String label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label);
             labelMap.put(label, vertex);
@@ -32,12 +31,12 @@ public class PostmanGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Anzahl der Kanten ein: (ganze Zahl zwischen 1 und 1000)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < 1 || edgeCount > 1000) {
+        if (edgeCount < 1 || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -52,7 +51,7 @@ public class PostmanGraphCreator implements IGraphCreator {
 
         try {
             checkIfisZusammenhaengenderGraph(graph);
-            PostmanGraphAlgorithm postmanGraphAlgorithm  = new PostmanGraphAlgorithm(graph);
+            PostmanGraphAlgorithm postmanGraphAlgorithm = new PostmanGraphAlgorithm(graph);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +106,7 @@ public class PostmanGraphCreator implements IGraphCreator {
         System.out.println("Graph: ");
         System.out.println(graph);
 
-        PostmanGraphAlgorithm postmanGraphAlgorithm  = new PostmanGraphAlgorithm(graph);
+        PostmanGraphAlgorithm postmanGraphAlgorithm = new PostmanGraphAlgorithm(graph);
 
     }
 }

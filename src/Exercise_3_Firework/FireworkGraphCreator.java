@@ -10,11 +10,11 @@ public class FireworkGraphCreator implements IGraphCreator {
 
     WeightedUndirectedGraph graph = new WeightedUndirectedGraph();
 
-    public void create () throws IOException {
+    public void create() throws IOException {
         System.out.println("Ein neuer Graph für die Feuerwerks-Choreographie wird erstellt.");
         System.out.println("Geben Sie die Anzahl der Bomben ein, inkl. Stelle, wo gezündet wird: (Ganze Zahl zwischen 2 und 1000)");
         int vertexCount = scanner.nextInt();
-        if(vertexCount < 2 || vertexCount > 1000) {
+        if (vertexCount < 2 || vertexCount > 1000) {
             throw new IllegalArgumentException();
         }
 
@@ -27,8 +27,8 @@ public class FireworkGraphCreator implements IGraphCreator {
         graph.addVertex(src);
         graph.setStart(src);
 
-        for (int i = 0; i < vertexCount-1; i++) {
-            System.out.println("Knoten " + (i+1) + ": ");
+        for (int i = 0; i < vertexCount - 1; i++) {
+            System.out.println("Knoten " + (i + 1) + ": ");
             label = bufferedReader.readLine();
             Vertex vertex = new Vertex(label);
             labelMap.put(label, vertex);
@@ -37,12 +37,12 @@ public class FireworkGraphCreator implements IGraphCreator {
 
         System.out.println("Geben Sie die Anzahl der Kanten ein: (Ganze Zahl zwischen 1 und 1000)");
         int edgeCount = scanner.nextInt();
-        if(edgeCount < 1 || edgeCount > 1000) {
+        if (edgeCount < 1 || edgeCount > 1000) {
             throw new IllegalArgumentException();
         }
 
         for (int i = 0; i < edgeCount; i++) {
-            System.out.println("Kante " + (i+1) + ": ");
+            System.out.println("Kante " + (i + 1) + ": ");
 
             System.out.println("von: ");
             String source = bufferedReader.readLine();
@@ -50,7 +50,7 @@ public class FireworkGraphCreator implements IGraphCreator {
             String dest = bufferedReader.readLine();
             System.out.println("Kantengewicht (1 - 10000): ");
             int weight = scanner.nextInt();
-            if(weight < 1 || weight > 10000) {
+            if (weight < 1 || weight > 10000) {
                 throw new IllegalArgumentException();
             }
 

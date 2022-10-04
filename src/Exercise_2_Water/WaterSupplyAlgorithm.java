@@ -23,7 +23,7 @@ public class WaterSupplyAlgorithm {
     }
 
 
-    private int fordFulkerson () {
+    private int fordFulkerson() {
 
         int maxFlow = 0;
 
@@ -54,7 +54,7 @@ public class WaterSupplyAlgorithm {
                 }
                 // counter, damit für die Senke nicht mehr nach dem nachbar geschaut wird.
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     // counter zurücksetzen
                     counter = 0;
                     break;
@@ -72,13 +72,13 @@ public class WaterSupplyAlgorithm {
                 }
 
                 counter++;
-                if (counter == path.size()-1) {
+                if (counter == path.size() - 1) {
                     break;
                 }
             }
 
             // und der umgekehrten kante die kapazität addieren
-            for (int i = path.size()-1; i > 0; i--) {
+            for (int i = path.size() - 1; i > 0; i--) {
 
                 Vertex v = path.get(i);
 
@@ -117,7 +117,7 @@ public class WaterSupplyAlgorithm {
         }
     }
 
-    private boolean isPath_bfs (Vertex s, Vertex t) {
+    private boolean isPath_bfs(Vertex s, Vertex t) {
         HashSet<Vertex> visitedNodes = new HashSet<>();
         LinkedList<Vertex> queue = new LinkedList<>();
         LinkedList<BfsNode> traversedNodes = new LinkedList<>();
@@ -133,7 +133,7 @@ public class WaterSupplyAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){ // O(m)
+            for (Node node : residualGraph.getAdjVertices(current)) { // O(m)
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -171,7 +171,7 @@ public class WaterSupplyAlgorithm {
             Vertex current = queue.poll();
 
             // für jeden nachbarknoten vom obersten queue-knoten:
-            for (Node node : residualGraph.getAdjVertices(current)){
+            for (Node node : residualGraph.getAdjVertices(current)) {
 
                 // falls der Knoten nicht schon besucht wurde (und die kante existiert / > 0 ist):
                 if ((!visitedNodes.contains(node.getDestVertex())) && (node.getEdge().getWeight() > 0)) {
@@ -226,7 +226,7 @@ public class WaterSupplyAlgorithm {
         return returnList;
     }
 
-    private void showIfWaterFlowIsEnough (int waterRequirement, int maxFlow) {
+    private void showIfWaterFlowIsEnough(int waterRequirement, int maxFlow) {
         System.out.println("Der Wasserbedarf des Ziels beträgt " + waterRequirement + "m³ pro Stunde.");
         System.out.println("Das Leitungsnetz reicht für maximal " + maxFlow + "m³ pro Stunde. ");
         if (waterRequirement <= maxFlow) {

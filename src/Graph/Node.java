@@ -5,7 +5,7 @@ public class Node {
     Edge edge;
     Vertex destVertex;
 
-    public Node (Edge edge, Vertex destVertex) {
+    public Node(Edge edge, Vertex destVertex) {
         this.edge = edge;
         this.destVertex = destVertex;
     }
