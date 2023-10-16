@@ -1,21 +1,17 @@
 # Graph-Algorithms
 
-Dieses Projekt ist im Modul Programmiertechnik 3 (Software Design, TH AB) entstanden.
-
-Implementiert wurde:
-
-  - eine Graph-Datenstruktur (Adjazenzliste)
-    - mit und ohne Gewichtung
-    - uni- und bidirektional
-    - Knoten und Kanten, sowie dazugehörige Operationen
+1. A graph data structure (adjacency list)
+  - with and without weighting
+  - uni- and bidirectional
+  - nodes and edges, as well as corresponding operations
     
-  - Algorithmen auf 7 Aufgaben verteilt:
-    1. "Straßenbau": Prim
-    2. "Wasserversorgung": Ford-Fulkerson
-    3. "Feuerwerk": Dijkstra
-    4. "Hochzeitspaare": Ford-Fulkerson
-    5. "Postbote": Hierholzer
-    6. "Straßenverkehr": Ford-Fulkerson
-    7. "Arbeitsverteilung": Ford-Fulkerson
+2. Algorithms distributed across 7 tasks:
+  - "Road construction": Prim
+  - "Water supply": Ford-Fulkerson
+  - "Fireworks": Dijkstra
+  - "Wedding couples": Ford-Fulkerson
+  - "Postman": Hierholzer
+  - "Road traffic": Ford-Fulkerson
+  - "Work distribution": Ford-Fulkerson
 
-  - Möglichkeit, eigene Beispiele über die Konsolen-Eingabe zu berechnen
+3. Opportunity to calculate own examples via console input
